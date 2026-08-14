@@ -1,6 +1,6 @@
 import requests
 
-url = "http://localhost:9698/predict"
+url = "https://flood-prediction-3eui.onrender.com/predict"
 
 
 flood_data = {

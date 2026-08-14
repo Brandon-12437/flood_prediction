@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Flood Prediction System</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+            background: #f4f7f9;
+        }
+
+        h1 {
+            text-align: center;
+            color: #0066cc;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            gap: 10px;
+        }
+
+        input {
+            padding: 8px;
+            width: 100%;
+        }
+
+        button {
+            margin-top: 20px;
+            width: 100%;
+            padding: 12px;
+            background: #0066cc;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #004999;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            font-size: 18px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>AI Flood Prediction System</h1>
+
+<form id="predictForm">
+
+<div class="grid">
+
+<input type="number" id="MonsoonIntensity" placeholder="Monsoon Intensity" required>
+<input type="number" id="TopographyDrainage" placeholder="Topography Drainage" required>
+
+<input type="number" id="RiverManagement" placeholder="River Management" required>
+<input type="number" id="Deforestation" placeholder="Deforestation" required>
+
+<input type="number" id="Urbanization" placeholder="Urbanization" required>
+<input type="number" id="ClimateChange" placeholder="Climate Change" required>
+
+<input type="number" id="DamsQuality" placeholder="Dams Quality" required>
+<input type="number" id="Siltation" placeholder="Siltation" required>
+
+<input type="number" id="AgriculturalPractices" placeholder="Agricultural Practices" required>
+<input type="number" id="Encroachments" placeholder="Encroachments" required>
+
+<input type="number" id="IneffectiveDisasterPreparedness" placeholder="Disaster Preparedness" required>
+<input type="number" id="DrainageSystems" placeholder="Drainage Systems" required>
+
+<input type="number" id="CoastalVulnerability" placeholder="Coastal Vulnerability" required>
+<input type="number" id="Landslides" placeholder="Landslides" required>
+
+<input type="number" id="Watersheds" placeholder="Watersheds" required>
+<input type="number" id="DeterioratingInfrastructure" placeholder="Infrastructure" required>
+
+<input type="number" id="PopulationScore" placeholder="Population Score" required>
+<input type="number" id="WetlandLoss" placeholder="Wetland Loss" required>
+
+<input type="number" id="InadequatePlanning" placeholder="Inadequate Planning" required>
+<input type="number" id="PoliticalFactors" placeholder="Political Factors" required>
+
+</div>
+
+<button type="submit">Predict Flood Risk</button>
+
+</form>
+
+<div id="result"></div>
+
+</div>
+
+<script>
+
+document.getElementById("predictForm").addEventListener("submit", async function(e){
+
+    e.preventDefault();
+
+    const data = {
+        MonsoonIntensity: Number(document.getElementById("MonsoonIntensity").value),
+        TopographyDrainage: Number(document.getElementById("TopographyDrainage").value),
+        RiverManagement: Number(document.getElementById("RiverManagement").value),
+        Deforestation: Number(document.getElementById("Deforestation").value),
+        Urbanization: Number(document.getElementById("Urbanization").value),
+        ClimateChange: Number(document.getElementById("ClimateChange").value),
+        DamsQuality: Number(document.getElementById("DamsQuality").value),
+        Siltation: Number(document.getElementById("Siltation").value),
+        AgriculturalPractices: Number(document.getElementById("AgriculturalPractices").value),
+        Encroachments: Number(document.getElementById("Encroachments").value),
+        IneffectiveDisasterPreparedness: Number(document.getElementById("IneffectiveDisasterPreparedness").value),
+        DrainageSystems: Number(document.getElementById("DrainageSystems").value),
+        CoastalVulnerability: Number(document.getElementById("CoastalVulnerability").value),
+        Landslides: Number(document.getElementById("Landslides").value),
+        Watersheds: Number(document.getElementById("Watersheds").value),
+        DeterioratingInfrastructure: Number(document.getElementById("DeterioratingInfrastructure").value),
+        PopulationScore: Number(document.getElementById("PopulationScore").value),
+        WetlandLoss: Number(document.getElementById("WetlandLoss").value),
+        InadequatePlanning: Number(document.getElementById("InadequatePlanning").value),
+        PoliticalFactors: Number(document.getElementById("PoliticalFactors").value)
+    };
+
+    const response = await fetch("/predict", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    });
+
+    const result = await response.json();
+
+    document.getElementById("result").innerHTML =
+        "<h2>Prediction Result</h2>" +
+        "<p><b>Flood Probability:</b> " + result.Flood_Probability + "</p>" +
+        "<p><b>Risk Level:</b> " + result.risk_level + "</p>" +
+        "<p><b>Recommendation:</b> " + result.recommendation + "</p>";
+});
+
+</script>
+
+</body>
+</html>
+

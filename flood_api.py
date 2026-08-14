@@ -1,6 +1,6 @@
 import pickle
 from flask import Flask, request, jsonify
-
+from flask import render_template
 model_file = "flood_prediction_model.bin"
 
 with open(model_file, "rb") as f_in:
@@ -9,13 +9,10 @@ with open(model_file, "rb") as f_in:
 app = Flask("Flood_Prediction")
 
 
-@app.route("/", methods=["GET"])
-def home():
-    return jsonify({
-        "message": "Flood Prediction API is running.",
-        "usage": "Send POST request to /predict with flood data."
-    })
-
+@app.route("/")
+def index():
+    return render_template("index.html")
+    
 
 @app.route("/predict", methods=["POST"])
 def predict():
