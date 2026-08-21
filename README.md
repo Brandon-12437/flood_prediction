@@ -18,6 +18,34 @@ The API provides:
 - Risk level
 - Recommended action
 # 📊 Exploratory Data Analysis (EDA)
+The exploratory data analysis was performed in the project notebook.
+
+The analysis includes:
+
+### Data Cleaning
+
+- Checking for missing values
+- Checking data types
+- Identifying duplicate records
+- Preparing features for machine learning
+
+### Feature Analysis
+
+The project investigates how environmental and infrastructure variables relate to flood risk.
+
+Important variables include:
+
+- Monsoon Intensity
+- Climate Change
+- Deforestation
+- Urbanization
+- Drainage Systems
+- Wetland Loss
+- Inadequate Planning
+- River Management
+
+### Data Visualization
+
 
 
 
