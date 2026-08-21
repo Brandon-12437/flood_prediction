@@ -1,6 +1,22 @@
 # FLOOD PREDICTION PROJECT
 ### Problem Description
-This project develops a machine learning system for predicting flood risk using environmental, infrastructure, climate, and geographical factors. The system provides a flood probability and corresponding risk level to support early awareness and decision-making.
+Flooding is one of the most destructive natural hazards, causing loss of life, damage to infrastructure, displacement of communities, and significant economic losses.
+
+### The Challenge
+
+Flood risk is influenced by multiple interacting factors, including rainfall intensity, drainage conditions, deforestation, urbanization, infrastructure quality, and environmental degradation.
+
+Traditional flood-risk assessment can be difficult to perform quickly when many variables need to be considered simultaneously.
+
+### The Solution
+
+This project develops a machine learning system that analyzes multiple environmental and infrastructure factors and produces a **flood probability and risk classification**.
+
+The API provides:
+
+- Flood probability
+- Risk level
+- Recommended action
 ### HOW TO RUN THE PROJECT
 Install Dependencies
 
