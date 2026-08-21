@@ -17,6 +17,10 @@ The API provides:
 - Flood probability
 - Risk level
 - Recommended action
+# 📊 Exploratory Data Analysis (EDA)
+
+
+
 ### HOW TO RUN THE PROJECT
 Install Dependencies
 
