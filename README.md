@@ -17,33 +17,34 @@ The API provides:
 - Flood probability
 - Risk level
 - Recommended action
-# 📊 Exploratory Data Analysis (EDA)
-The exploratory data analysis was performed in the project notebook.
+- 
+## 📊 Exploratory Data Analysis (EDA)
 
-The analysis includes:
+The dataset used for this project is the flood_data.csv dataset, originally hosted on Kaggle. It contains multiple features relevant to flood prediction, including environmental, infrastructure, and socio-economic indicators.
 
-### Data Cleaning
+Dataset: flood_data.csv
+Rows: 50,000
+Columns: 21
+Data Type: Raw dataset
+Target: Flood prediction/risk
 
-- Checking for missing values
-- Checking data types
-- Identifying duplicate records
-- Preparing features for machine learning
+The dataset contains several factors that can influence flood occurrence and severity, such as monsoon intensity, drainage conditions, deforestation, urbanization, climate change, river management, landslides, wetland loss, population score, and inadequate planning.
 
-### Feature Analysis
+## Data Preparation
 
-The project investigates how environmental and infrastructure variables relate to flood risk.
+Before training the machine learning models, the raw dataset was inspected and prepared for modeling. This included:
 
-Important variables include:
+Checking the dataset structure and data types.
+Identifying missing or inconsistent values.
+Examining the distribution of the target variable.
+Separating the input features from the prediction target.
+Splitting the dataset into training, validation, and test sets.
+Preparing the features in a format suitable for machine learning algorithms.
+Feature Analysis
 
-- Monsoon Intensity
-- Climate Change
-- Deforestation
-- Urbanization
-- Drainage Systems
-- Wetland Loss
-- Inadequate Planning
-- River Management
+The project analyzes how different environmental and socio-economic factors contribute to flood risk. Features such as MonsoonIntensity, TopographyDrainage, Deforestation, Urbanization, ClimateChange, DrainageSystems, Landslides, WetlandLoss, and InadequatePlanning are particularly relevant to understanding flood vulnerability.
 
+The prepared dataset was then used to compare different machine learning algorithms and identify a suitable model for deployment through the prediction API.
 ### Data Visualization
 
 
