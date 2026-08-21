@@ -50,6 +50,46 @@ The prepared dataset was then used to compare different machine learning algorit
 
 
 
+## 🤖 Model Selection & Training
+
+Several machine learning approaches were evaluated during the development of the Flood Prediction System to identify a model that could effectively capture the relationship between environmental, infrastructure, and socio-economic factors and flood risk.
+
+### Models Evaluated
+
+The model selection process included:
+
+Decision Tree Classifier
+Random Forest Classifier
+XGBoost Classifier
+
+Different hyperparameter configurations were tested during the development process to improve model performance and identify a suitable final model for deployment.
+
+### 🧠 Final Model
+
+After comparing the evaluated approaches, the selected model was trained using the prepared flood dataset and saved for use by the prediction API.
+
+The trained model is serialized and stored as:
+
+flood_prediction_model.bin
+
+The file contains the trained model together with the required data transformation object, allowing the API to load the model and make predictions on new flood-related input data.
+
+🚀 Model Deployment
+
+The serialized model is loaded by flood_api.py, which exposes a Flask REST API through the /predict endpoint.
+
+The API receives flood-related features, transforms the input using the saved data transformer, and generates a flood probability and corresponding risk classification:
+
+Low Flood Risk
+Moderate Flood Risk
+High Flood Risk
+Very High Flood Risk
+
+The prediction service is containerized using Docker and runs on port 9698.
+
+
+
+
 ### HOW TO RUN THE PROJECT
 Install Dependencies
 
