@@ -130,46 +130,53 @@ The API returns:
                         "Flood_Probability": 0.317,
                         "risk_level": "Moderate Flood Risk",
                         "recommendation": "Monitor updates closely.",
-                                    }
-### HOW TO RUN THE PROJECT
-Install Dependencies
 
-                                                             pip install -r requirements.txt
- Run API Locally
-                                                             
-                                                              python flood_api.py
-Run with Docker
-                                                              
-                                                              docker build -t flood-prediction:v1 .   
-                                                              docker run -d --name flood-api -p 9698:9698 flood-prediction:v1
+### 🐳 CONTAINERIZATION
 
-Sending prediction requests to API
+The application is containerized using Docker to provide a consistent runtime environment.
 
-Check if Docker is running
-                                                               
-                                                               docker ps
-Send a prediction request
+### Build the Docker image
+                                                        
+                                                        docker build -t flood-prediction:v1 .
+###Run the container
 
-                                                        curl -X POST http://localhost:9698/predict \
-                                                          -H "Content-Type: application/json" \
-                                                          -d '{
-                                                             "MonsoonIntensity": 5,
-                                                             "TopographyDrainage": 4,
-                                                             "RiverManagement": 3,
-                                                             "Deforestation": 5,
-                                                             "Urbanization": 4,
-                                                             "ClimateChange": 5,
-                                                             "DamsQuality": 3,
-                                                             "Siltation": 4,
-                                                             "AgriculturalPractices": 3,
-                                                             "Encroachments": 2,
-                                                             "DrainageSystems": 4,
-                                                             "CoastalVulnerability": 3,
-                                                             "Landslides": 2,
-                                                             "Watersheds": 4,
-                                                             "DeterioratingInfrastructure": 3,
-                                                             "PopulationScore": 5,
-                                                             "WetlandLoss": 3,
-                                                             "InadequatePlanning": 4,
-                                                             "PoliticalFactors": 2
-                                                           }'
+                                                       docker run -d --name flood-api -p 9698:9698 flood-prediction:v1                       
+
+ ## 🧪 Testing the API
+
+A prediction request can be sent using curl:
+
+                                             curl -X POST http://localhost:9698/predict \
+                                               -H "Content-Type: application/json" \
+                                               -d '{
+                                                    "MonsoonIntensity": 5,
+                                                    "TopographyDrainage": 4,
+                                                     "Deforestation": 5,
+                                                     "ClimateChange": 5,
+                                                     "DamsQuality": 3,
+                                                     "AgriculturalPractices": 3,
+                                                     "Encroachments": 2,
+                                                     "DrainageSystems": 4,
+                                                     "CoastalVulnerability": 3,
+                                                     "Landslides": 2,
+                                                     "Watersheds": 4,
+                                                     "DeterioratingInfrastructure": 3,
+                                                     "PopulationScore": 5,
+                                                     "WetlandLoss": 3,
+                                                     "InadequatePlanning": 4,
+                                                     "PoliticalFactors": 2
+
+                                                 }'
+##☁️ CLOUD DEPLOYMENT
+
+The API can be deployed as a containerized web service on Render.
+
+Deployment Process
+Push the project to GitHub.
+Connect the GitHub repository to Render.
+Configure the Docker deployment.
+Deploy the service.
+Use the generated Render URL to access the API.
+Live API
+YOUR_RENDER_URL
+
