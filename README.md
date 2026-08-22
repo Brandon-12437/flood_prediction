@@ -74,22 +74,63 @@ flood_prediction_model.bin
 
 The file contains the trained model together with the required data transformation object, allowing the API to load the model and make predictions on new flood-related input data.
 
-🚀 Model Deployment
+🔌 API
 
-The serialized model is loaded by flood_api.py, which exposes a Flask REST API through the /predict endpoint.
+The trained model is exposed through a Flask REST API.
 
-The API receives flood-related features, transforms the input using the saved data transformer, and generates a flood probability and corresponding risk classification:
+Endpoint
+                                                                          
+                                                                          POST /predict
+Local URL
+                                                                          
+                                                                          http://localhost:9698/predict
+Request
 
-Low Flood Risk
-Moderate Flood Risk
-High Flood Risk
-Very High Flood Risk
+## 🔌 API
 
-The prediction service is containerized using Docker and runs on port 9698.
+The trained model is exposed through a Flask REST API.
 
+Endpoint
+POST /predict
+Local URL
+http://localhost:9698/predict
+Request
 
+The API accepts JSON containing the flood-risk features.
 
+Example:
 
+                {
+                    "MonsoonIntensity": 5,
+                    "TopographyDrainage": 4,
+                    "RiverManagement": 3,
+                    "Deforestation": 5,
+                    "Urbanization": 4,
+                    "ClimateChange": 5,
+                    "DamsQuality": 3,
+                    "Siltation": 4,
+                    "AgriculturalPractices": 3,
+                    "Encroachments": 2,
+                    "DrainageSystems": 4,
+                    "CoastalVulnerability": 3,
+                    "Landslides": 2,
+                    "Watersheds": 4,
+                    "DeterioratingInfrastructure": 3,
+                    "PopulationScore": 5,
+                    "WetlandLoss": 3,
+                    "InadequatePlanning": 4,
+                    "PoliticalFactors": 2
+             
+             }
+### Response
+
+The API returns:
+
+                  {
+                        "Flood_Probability": 0.317,
+                        "risk_level": "Moderate Flood Risk",
+                        "recommendation": "Monitor updates closely.",
+                                    }
 ### HOW TO RUN THE PROJECT
 Install Dependencies
 
