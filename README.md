@@ -167,16 +167,94 @@ A prediction request can be sent using curl:
                                                      "PoliticalFactors": 2
 
                                                  }'
-##☁️ CLOUD DEPLOYMENT
+## ☁️ CLOUD DEPLOYMENT
 
-The API can be deployed as a containerized web service on Render.
+The Flood Prediction API was deployed to the cloud using **Render**. The application is packaged as a Docker container, allowing the same environment used during local development to be used in production.
 
-Deployment Process
-Push the project to GitHub.
-Connect the GitHub repository to Render.
-Configure the Docker deployment.
-Deploy the service.
-Use the generated Render URL to access the API.
-Live API
-YOUR_RENDER_URL
+### Deployment Platform
 
+- **Cloud Platform:** Render
+- **Application Framework:** Flask
+- **Containerization:** Docker
+- **Machine Learning Model:** XGBoost Regressor
+- **API Endpoint:** `/predict`
+
+### 🌐 Live Application
+
+The deployed Flood Prediction application is publicly accessible through the following URL:
+
+https://flood-prediction-3eui.onrender.com
+
+The web interface allows users to enter the required flood-related features and submit them to the prediction API.
+
+### 🔌 Production API
+
+The same `/predict` endpoint used during local development is available through the deployed application.
+
+Production endpoint:
+
+https://flood-prediction-3eui.onrender.com/predict
+
+The API receives the environmental, infrastructure, and socio-economic features as JSON and returns the predicted flood probability together with the corresponding risk level and recommended action.
+
+### 🚀 Deployment Process
+
+The application was first containerized using Docker:
+
+    docker build -t flood-prediction:v1 .
+
+The Docker image contains:
+
+- Flask API
+- Trained machine learning model
+- DictVectorizer
+- Python dependencies
+- Application files
+
+The containerized application was then deployed to Render as a web service.
+
+Render builds the Docker image and runs the Flask application in the cloud, making the prediction service accessible through a public URL.
+
+### 🔄 Deployment Architecture
+
+    User
+      │
+      ▼
+    Web Interface
+      │
+      ▼
+    Render Cloud
+      │
+      ▼
+    Docker Container
+      │
+      ▼
+    Flask REST API
+      │
+      ▼
+    DictVectorizer
+      │
+      ▼
+    Trained XGBoost Model
+      │
+      ▼
+    Flood Probability
+      │
+      ▼
+    Risk Level & Recommendation
+
+### 🧪 Cloud Testing
+
+After deployment, the API was tested using the public Render URL to verify that the production environment could successfully load the trained model and process prediction requests.
+
+A successful request returns information such as:
+
+    {
+        "Flood_Probability": 0.317,
+        "risk_level": "Moderate Flood Risk",
+        "recommendation": "Monitor updates closely.",
+        "emergency_action_required": false,
+        "color_code": "yellow"
+    }
+
+The cloud deployment makes the Flood Prediction System accessible without requiring users to install Python, the model, or the project dependencies locally.
