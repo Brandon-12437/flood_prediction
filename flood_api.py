@@ -1,7 +1,10 @@
+import os
 import pickle
+import numpy as np
 from flask import Flask, request, jsonify
 from flask import render_template
-model_file = "flood_prediction_model.bin"
+
+model_file = os.path.join(os.path.dirname(__file__), "flood_prediction_model.bin")
 
 with open(model_file, "rb") as f_in:
     dv, model = pickle.load(f_in)
@@ -21,7 +24,7 @@ def predict():
 
         X_new = dv.transform([flood_data])
 
-        predicted_probability = model.predict(X_new)[0]
+        predicted_probability = float(np.clip(model.predict(X_new)[0], 0.0, 1.0))
 
         if predicted_probability >= 0.75:
             risk_level = "Very High Flood Risk"
@@ -57,4 +60,4 @@ def predict():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=9698)
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 9698)))

@@ -2,30 +2,28 @@ import requests
 
 url = "https://flood-prediction-3eui.onrender.com/predict"
 
-
 flood_data = {
-    "MonsoonIntensity": 6,
-    "TopographyDrainage": 7,
-    "RiverManagement": 5,
-    "Deforestation": 6,
+    "MonsoonIntensity": 16,
+    "TopographyDrainage": 17,
+    "RiverManagement": 15,
+    "Deforestation": 16,
     "Urbanization": 7,
-    "ClimateChange": 8,
-    "DamsQuality": 6,
+    "ClimateChange": 18,
+    "DamsQuality": 16,
     "Siltation": 7,
-    "AgriculturalPractices": 5,
-    "Encroachments": 6,
+    "AgriculturalPractices": 15,
+    "Encroachments": 16,
     "IneffectiveDisasterPreparedness": 5,
-    "DrainageSystems": 4,
-    "CoastalVulnerability": 3,
-    "Landslides": 2,
+    "DrainageSystems": 14,
+    "CoastalVulnerability": 13,
+    "Landslides": 12,
     "Watersheds": 6,
     "DeterioratingInfrastructure": 5,
     "PopulationScore": 7,
     "WetlandLoss": 6,
     "InadequatePlanning": 7,
-    "PoliticalFactors": 4,
+    "PoliticalFactors": 17
 }
-
 
 response = requests.post(url, json=flood_data).json()
 print(" Prediction Results:")

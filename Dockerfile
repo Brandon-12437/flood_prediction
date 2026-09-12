@@ -1,4 +1,4 @@
-FROM python:3.10.19-slim
+FROM python:3.12-slim
 
 WORKDIR /app
 
@@ -20,4 +20,4 @@ COPY . .
 
 EXPOSE 9698
 
-CMD ["python", "flood_api.py"]
+CMD ["sh", "-c", "gunicorn --bind 0.0.0.0:${PORT:-9698} flood_api:app"]

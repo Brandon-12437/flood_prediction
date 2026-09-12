@@ -116,7 +116,7 @@ y_test = df_test.FloodProbability.values
 
 
 
-train_dicts = df_train.to_dict(orient = 'records')
+train_dicts = X_train.to_dict(orient = 'records')
 dv= DictVectorizer(sparse = False) 
 X_train = dv.fit_transform(train_dicts)
 
@@ -129,11 +129,11 @@ model = RandomForestRegressor(
 model.fit(X_train, y_train)
 
 
-val_dicts = df_val.to_dict(orient = 'records')
+val_dicts = X_val.to_dict(orient = 'records')
 X_val = dv.transform(val_dicts)
 
 
-test_dicts = df_test.to_dict(orient = 'records')
+test_dicts = X_test.to_dict(orient = 'records')
 X_test = dv.transform(test_dicts)
 
 
@@ -380,34 +380,11 @@ plt.show()
 
 # SAVING THE MODEL
 
-
-
-import pickle
-
-
-
-
-output_file = "flood_prediction_model.bin"
-output_file
-
-with open(output_file, "wb") as f_out:
-    pickle.dump(xgb_model, f_out)
-
-print("Model saved successfully!")
-
-
-import pickle
-
-with open("flood_prediction_model.bin", "rb") as f_in:
-    xgb_model = pickle.load(f_in)
-
-print(xgb_model)
-
-import pickle
-
 output_file = "flood_prediction_model.bin"
 with open(output_file, "wb") as f_out:
     pickle.dump((dv, xgb_model), f_out, protocol=pickle.HIGHEST_PROTOCOL)
+
+print("Model saved successfully!")
 
 with open(output_file, "rb") as f_in:
     dv, model = pickle.load(f_in)
@@ -416,26 +393,26 @@ print(type(model), model.__class__.__module__, model.__class__.__name__)
 
 # SAMPLE INPUT (use real values)
 flood_data = {
-    "MonsoonIntensity": 6,
-    "TopographyDrainage": 7,
-    "RiverManagement": 5,
-    "Deforestation": 6,
+    "MonsoonIntensity": 16,
+    "TopographyDrainage": 17,
+    "RiverManagement": 15,
+    "Deforestation": 16,
     "Urbanization": 7,
-    "ClimateChange": 8,
-    "DamsQuality": 6,
+    "ClimateChange": 18,
+    "DamsQuality": 16,
     "Siltation": 7,
-    "AgriculturalPractices": 5,
-    "Encroachments": 6,
+    "AgriculturalPractices": 15,
+    "Encroachments": 16,
     "IneffectiveDisasterPreparedness": 5,
-    "DrainageSystems": 4,
-    "CoastalVulnerability": 3,
-    "Landslides": 2,
+    "DrainageSystems": 14,
+    "CoastalVulnerability": 13,
+    "Landslides": 12,
     "Watersheds": 6,
     "DeterioratingInfrastructure": 5,
     "PopulationScore": 7,
     "WetlandLoss": 6,
     "InadequatePlanning": 7,
-    "PoliticalFactors": 4,
+    "PoliticalFactors": 17
 }
 
 X_new = dv.transform([flood_data])
@@ -457,4 +434,5 @@ def print_risk_and_measure(p):
         print("Measure: Stay informed and review your household emergency plan.")
 
 print_risk_and_measure(predicted_probability)
+
 
