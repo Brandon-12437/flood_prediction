@@ -3,6 +3,7 @@ import pickle
 import numpy as np
 from flask import Flask, request, jsonify
 from flask import render_template
+from flask_cors import CORS
 
 model_file = os.path.join(os.path.dirname(__file__), "flood_prediction_model.bin")
 
@@ -10,6 +11,7 @@ with open(model_file, "rb") as f_in:
     dv, model = pickle.load(f_in)
 
 app = Flask("Flood_Prediction")
+CORS(app)
 
 
 @app.route("/")
