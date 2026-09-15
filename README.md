@@ -160,6 +160,7 @@ The Dockerized API is hosted at:
 
 The `/predict` endpoint receives the 20 flood-related input factors
 and returns the predicted flood probability, risk level, and
+<img width="700" alt="Cloud Deployment" src="screenshots/Screenshot%20from%202026-09-15%2011-22-46.png" />
 recommended action.
 
 ### Frontend — GitHub Pages
