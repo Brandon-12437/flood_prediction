@@ -168,30 +168,20 @@ recommended action.
 The web interface is deployed separately using GitHub Pages.
 
 Live application:
-
+                                            
                                              https://brandon-12437.github.io/flood_prediction/
 
-The frontend communicates with the deployed Flask API on Render to
-generate predictions.
+The frontend communicates with the deployed Flask API on Render to generate predictions.
 
-### Deployment Architecture
-User
-  │
-  ▼
-GitHub Pages
-FloodGuard AI Frontend
-  │
-  │ HTTPS POST /predict
-  ▼
-Render
-Flask REST API
-  │
-  ▼
-XGBoost Model
-  │
-  ▼
-Flood Prediction
-  │
-  ▼
-Risk Level + Recommendation
+<img width="700" alt="Cloud Deployment 1" src="screenshots/Screenshot%20from%202026-09-15%2011-27-58.png" />
+<img width="700" alt="Cloud Deployment 2" src="screenshots/Screenshot%20from%202026-09-15%2011-28-39.png" />
+<img width="700" alt="Cloud Deployment 4" src="screenshots/Screenshot%20from%202026-09-15%2011-33-11.png" />
+<img width="700" alt="Cloud Deployment 3" src="screenshots/Screenshot%20from%202026-09-15%2011-29-10.png" />
+
+
+### Deployment Architecture   
+User  -  GitHub Pages (FloodGuard AI Frontend)  -   HTTPS POST /predict - Render (Flask REST API)  -   XGBoost Model   -   Flood Prediction    -    Risk Level + Recommendation
+
+                                           
+                                      
 
