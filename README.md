@@ -112,5 +112,36 @@ consistently across different environments.
 ### Run the container
                             docker run -d --name flood-api -p 9698:9698 flood-prediction:v3
                             
-   <img width="700" alt="Docker Build" src="screenshots/Screenshot%20from%202026-09-15%2011-04-18.png" />                  
+   <img width="700" alt="Docker Build" src="screenshots/Screenshot%20from%202026-09-15%2011-04-18.png" /> 
+
+### Testing Locally with cURL
+
+After starting the Docker container, the API can be tested locally
+using cURL.
+
+    ```bash      curl -X POST http://localhost:9698/predict \
+                -H "Content-Type: application/json" \
+                 -d '{
+                "MonsoonIntensity":10,
+                "TopographyDrainage":10,
+                "RiverManagement":10,
+                "Deforestation":10,
+                "Urbanization":10,
+                "ClimateChange":10,
+                "DamsQuality":10,
+                "Siltation":10,
+                "AgriculturalPractices":10,
+                "Encroachments":10,
+                "IneffectiveDisasterPreparedness":10,
+                "DrainageSystems":10,
+                "CoastalVulnerability":10,
+                "Landslides":10,
+                "Watersheds":10,
+                "DeterioratingInfrastructure":10,
+                "PopulationScore":10,
+                "WetlandLoss":10,
+                "InadequatePlanning":10,
+                "PoliticalFactors":10
+                 }'
+<img width="700" alt="Docker Container Running" src="screenshots/Screenshot%20from%202026-09-15%2011-05-57.png" />   
 
