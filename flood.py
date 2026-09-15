@@ -421,16 +421,16 @@ print(f"Predicted Flood Probability: {predicted_probability:.3f}")
 
 def print_risk_and_measure(p):
     if p >= 0.75:
-        print("🚨 Very High Flood Risk")
+        print(" Very High Flood Risk")
         print("Measure: Evacuate to higher ground immediately and follow official orders.")
     elif p >= 0.50:
-        print("⚠️ High Flood Risk")
+        print("High Flood Risk")
         print("Measure: Prepare to evacuate — move valuables higher and charge devices.")
     elif p >= 0.25:
-        print("🟡 Moderate Flood Risk")
+        print("Moderate Flood Risk")
         print("Measure: Monitor updates closely and have your emergency kit ready.")
     else:
-        print("🟢 Low Flood Risk")
+        print(" Low Flood Risk")
         print("Measure: Stay informed and review your household emergency plan.")
 
 print_risk_and_measure(predicted_probability)
