@@ -145,3 +145,52 @@ using cURL.
                  }'
 <img width="700" alt="Docker Container Running" src="screenshots/Screenshot%20from%202026-09-15%2011-05-57.png" />   
 
+## CLOUD DEPLOYMENT
+
+The FloodGuard AI application is deployed using two separate cloud
+services.
+
+### Backend API — Render
+
+The Flask API and trained XGBoost model are deployed on Render.
+
+The Dockerized API is hosted at:
+
+                                            https://flood-prediction-3eui.onrender.com
+
+The `/predict` endpoint receives the 20 flood-related input factors
+and returns the predicted flood probability, risk level, and
+recommended action.
+
+### Frontend — GitHub Pages
+
+The web interface is deployed separately using GitHub Pages.
+
+Live application:
+
+                                             https://brandon-12437.github.io/flood_prediction/
+
+The frontend communicates with the deployed Flask API on Render to
+generate predictions.
+
+### Deployment Architecture
+User
+  │
+  ▼
+GitHub Pages
+FloodGuard AI Frontend
+  │
+  │ HTTPS POST /predict
+  ▼
+Render
+Flask REST API
+  │
+  ▼
+XGBoost Model
+  │
+  ▼
+Flood Prediction
+  │
+  ▼
+Risk Level + Recommendation
+
