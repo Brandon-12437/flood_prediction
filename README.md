@@ -96,7 +96,19 @@ target flood probability values.
 After training, the `DictVectorizer` and trained XGBoost model were
 serialized together using Python's `pickle` module.
 
-```python
-with open("flood_prediction_model.bin", "wb") as f_out:
-    pickle.dump((dv, xgb_model), f_out, protocol=pickle.HIGHEST_PROTOCOL)  
+                   with open("flood_prediction_model.bin", "wb") as f_out:
+                       pickle.dump((dv, xgb_model), f_out, protocol=pickle.HIGHEST_PROTOCOL)
+## CONTAINERIZATION
+
+Docker was used to containerize the FloodGuard AI Flask API and its
+machine learning dependencies.
+
+The application is packaged into a Docker image so that it can run
+consistently across different environments.
+
+### Build the Docker Image
+
+                            docker build -t flood-prediction:v3 .
+### Run the container
+                            docker run -d --name flood-api -p 9698:9698 flood-prediction:v3
 
