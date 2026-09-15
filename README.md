@@ -111,4 +111,6 @@ consistently across different environments.
                             docker build -t flood-prediction:v3 .
 ### Run the container
                             docker run -d --name flood-api -p 9698:9698 flood-prediction:v3
+                            
+   <img width="700" alt="Docker Build" src="screenshots/Screenshot%20from%202026-09-15%2011-04-18.png" />                  
 
