@@ -56,3 +56,47 @@ machine learning model development.
 
    <img width="700" alt="FloodGuard AI Screenshot" src="screenshots/Screenshot%20from%202026-09-14%2009-23-20.png" />
 
+ ## MODEL TRAINING & REPRODUCIBILITY
+
+The flood prediction model was developed using the `flood_data.csv`
+dataset containing 50,000 records and 20 input features.
+
+### Model Training
+
+The target variable is `FloodProbability`.
+
+An **XGBoost Regressor** was used to learn the relationship between
+the flood-related factors and the target flood probability.
+
+The model was trained using:
+
+- Learning rate: `0.3`
+- Maximum depth: `6`
+- Minimum child weight: `1`
+- Number of estimators: `200`
+- Objective: `reg:squarederror`
+- Random state: `42`
+
+The dataset was divided into training, validation and testing sets before model
+training.
+
+### Model Evaluation
+
+The trained model was evaluated using:
+
+- **R² Score:** `0.99995`
+- **MAE:** `0.0000129`
+- **RMSE:** `0.000349`
+
+These metrics measure how closely the model's predictions match the
+target flood probability values.
+
+### Model Serialization
+
+After training, the `DictVectorizer` and trained XGBoost model were
+serialized together using Python's `pickle` module.
+
+```python
+with open("flood_prediction_model.bin", "wb") as f_out:
+    pickle.dump((dv, xgb_model), f_out, protocol=pickle.HIGHEST_PROTOCOL)  
+
