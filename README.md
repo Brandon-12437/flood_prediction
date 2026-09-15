@@ -52,7 +52,7 @@ provide useful information for estimating flood risk.
 The EDA findings were used to guide the preparation of the data for
 machine learning model development.
 
-##DATA VISUALIZATION
+## DATA VISUALIZATION
 
-    2026-09-14 09-23-20.png
+   <img width="700" alt="FloodGuard AI Screenshot" src="screenshots/Screenshot%20from%202026-09-14%2009-23-20.png" />
 
